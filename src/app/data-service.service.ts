@@ -190,7 +190,7 @@ export class DataService {
 
 
   getGlobalDashboard(): Observable<any>{
-    var url = 'http://35.185.240.172/nkd/reportindex.php/Dashboard';
+    var url = 'http://35.185.240.172/nkd/reportIndex.php/Dashboard';
     
     return this.http.get(url)
                     .map( (res: Response) => res.json() )
@@ -198,7 +198,7 @@ export class DataService {
   }
 
   getCountryDashboard(id): Observable<any>{
-    var url = 'http://35.185.240.172/nkd/index.php/Dashboard/Country/'+id;
+    var url = 'http://35.185.240.172/nkd/reportIndex.php/Dashboard/Country/'+id;
     
     return this.http.get(url)
                     .map( (res: Response) => res.json() )
@@ -206,7 +206,7 @@ export class DataService {
   }
 
   getStoreDashboard(id): Observable<any>{
-    var url = 'http://35.185.240.172/nkd/index.php/Dashboard/Store/'+id;
+    var url = 'http://35.185.240.172/nkd/reportIndex.php/Dashboard/Store/'+id;
     
     return this.http.get(url)
                     .map( (res: Response) => res.json() )
