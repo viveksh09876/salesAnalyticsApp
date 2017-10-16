@@ -1,0 +1,167 @@
+@media (min-width: 992px) and (max-width: 1199px) {
+    .main_sidebar .logo{ padding: 14px 11%;}
+    .graph_section .common_box{ min-height: 175px;}
+    .graph_section .common_box.half{}
+    .graph_section .common_box.half .progressimg{ width: 140px; float: left}
+    .graph_section .common_box .indicate_list.small-graph{ padding-left: 0; padding-top: 45px;}
+    .filter_section .nav-tabs li a{ min-width: 160px;}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .title_sec h2{ font-size: 18px; top: 30px;}
+    .main_sidebar .logo{ padding: 10px 11%;}
+    .main_sidebar{ width: 30%;}
+    .main_container{ width: 70%; margin-left: 30%;}
+    .pagesummmary_box{ margin: 10px 0 20px;}
+    .sales_box ul li span{ font-size: 16px; line-height: 20px; padding: 0;}
+    .sales_box ul li strong{ font-size: 25px; line-height: 30px;}
+    .indicate_list li p{ font-size: 16px; line-height: 20px;}
+    .indicate_list li h3{ font-size: 20px; line-height: 25px;}
+    .indicate_list li .arrow{ height: 40px; width: 40px; line-height: 35px;}
+    .indicate_list li{ padding: 7px 0;}
+    
+    .graph_section .common_box{ width: calc(50% - 10px);}
+    .graph_section .common_box.half{ width: calc(100%);}
+    .filter_section .nav-tabs{ margin: 0;}
+    .advanced-filter .curreny_box{ margin: 8px 10px 0 0;}
+}
+
+
+@media (max-width: 767px){
+	.graph_section .common_box.full-box{min-height:0px;}
+	.graph_section .common_box .week{font-size:12px;}
+    .sebm-google-map-container{height:240px;}
+    .login-block{width:300px;}
+    .graph_section .common_box.customers h3{padding:0px;}
+    body.noshow{ overflow: hidden;}
+    .overlay{ position: absolute; left: 0; top: 0; content: ''; height: 100%; width: 100%; background: rgba(0,0,0,.6); display: none;}
+    .overlay.showlay{ display: block}
+    .main_sidebar{ position: static; height: auto; min-height: 320px; width: 100%; background: #7c984e;}
+    .main_sidebar + .main_container{ margin: -180px 0 0; width: 100%;}
+    .wrapper{ margin: 0 10px;}
+    .sales_box ul li{ padding: 5px 10px;}
+    .sales_box ul li:first-child{ border-color: #fff;}
+    .sales_box ul li span{ font-size: 14px; line-height: 20px; padding: 0;}
+    .sales_box ul li strong{ font-size: 25px; color: #fff; line-height: 30px;}
+    #Main_menu ul{ margin: 0;}
+    #Main_menu li a{ padding: 10px;}
+    .pagesummmary_box .sales_box{ display: none}
+	
+	.summary_title ul li a{ font-size:14px;padding: 0 10px}
+    .main_sidebar nav{ margin: 0; }
+    .main_sidebar nav .sales_box{ margin: 0 0 20px; display: block}
+    .main_sidebar nav .sales_box li{color: #fff;}
+    .main_sidebar .navbar-header{padding: 10px 0;}
+    .main_sidebar .logo{ display: none;}
+    .navbar-toggle{ background: none !Important; z-index: 9; position: relative; margin: 0; float: left; border: none;}
+    .navbar-toggle .icon-bar{ background: #fff !Important;}
+
+    .navbar-toggle2{display: block;}
+	.navbar-toggle2{ background: none !Important; z-index: 9; position: relative; margin: 0; float: left; border: none;}
+
+    .navbar-toggle.cross .icon-bar:nth-of-type(4){ display: none;}
+    .navbar-toggle.cross .icon-bar:nth-of-type(2){ transform: rotate(45deg); margin:5px 0 0 0;}
+    .navbar-toggle.cross .icon-bar:nth-of-type(3){ transform: rotate(-45deg); margin: -2px 0 0}
+    
+    #Main_menu{ display: block; position: fixed; transform: translateX(-260px); top: 0; height: 100%; background: #7C984E; width: 260px; z-index: 99;}
+    #Main_menu.show{transform: translateX(0%); }
+    #Main_menu li.logo{ display: block; padding: 0 10%;}
+    #Main_menu li.logo a{ padding: 0;}
+    #Main_menu li.logo a:hover{ background: #fff;}
+    
+    .user-mobile-dropdown{ background: #fff; color: #fff; top: 0; position: fixed; z-index: 99; right: 0; width: 260px; transition:.5s; transform: translateX(260px); display: block!Important; min-height: calc(100%);}
+    .user-mobile-dropdown.show{transform: translateX(0);}
+    .user-mobile-dropdown li{ border-bottom: 1px solid #7C984E;  color: #5d7233;}
+    .user-mobile-dropdown li:hover{ background: #4e6a20 ; color: #fff;}
+    .user-mobile-dropdown li:hover a{ color: #fff;}
+    .user-mobile-dropdown li.usr{ padding: 10px 10px;}
+    .user-mobile-dropdown li.usr:hover{ background: none; color: #4e6a20;}
+    .user-mobile-dropdown li.usr img{ margin-right: 5px;}
+    .user-mobile-dropdown li a{ padding: 10px; color: #5d7233; display: block; font-size: 15px; line-height: 20px;}
+    .user-mobile-dropdown li a i{ margin-right:10px;}
+    .user-mobile-dropdown li .curreny_box{ margin: 10px; color: #333; float: none; display: inline-block;}
+    
+    .admin_sec{ padding: 5px 5%; text-align: center; display: none; margin: 0 0 20px; background: #5D7233; color: #fff;}
+    .admin_sec p{ float: none; color: #fff;}
+    .admin_sec .user, .admin_sec .user i{ color: #fff;}
+	.navbar-header .icon-back{ float: left; display: block; z-index: 9; display: block; font-size: 30px; line-height: 10px; color: #fff; margin: 0 0px 0 13px;}
+    .navbar-header .login-toggle{ float: right; text-align: right; position: relative; z-index: 9; display: block; color: #fff; margin: 0 10px 0 0; font-size: 20px; width: 20px;}
+    .navbar-header .login-toggle.fade, .navbar-header .navbar-toggle.fade{ display: none;}
+    .navbar-header .login-toggle.cross .icon-bar{ display: block;}
+    .navbar-header .login-toggle.cross .fa-ellipsis-v{ display: none;}
+    .navbar-header .login-toggle .icon-bar{ height: 2px; width: 22px; background: #fff; display: block; position: absolute; right: -5px; top: 13px; display: none; transform: rotate(45deg)}
+    .navbar-header .login-toggle .icon-bar + .icon-bar{transform: rotate(-45deg)}
+    .admin_sec a{ float: none; display: inline-block; margin: 5px 0;}
+    .navbar-header > h2 { color: #fff;  display: inline-block;  font-size: 20px;  line-height: 20px; margin: 6px 0 0;  text-align: center;  text-transform: uppercase; width: calc(100% - 75px);}
+    
+    .pagesummmary_box{ border-radius: 8px;}
+    .pagesummmary_box .indicate_list li h3{ color: #009245}
+    .pagesummmary_box .fullchart-graph{ min-height: 120px;}
+    .summary_title{ border-radius: 8px 8px 0 0; padding: 0 10px;}
+	.summary_title a{line-height:20px; font-size:14px;}
+    .summary_title a.day{ line-height: 35px}
+    .summary_title .calender_sec ul li a{ font-size: 14px; line-height: 20px; padding: 4px 10px;}
+    .summary_title h3{ font-size: 16px;}
+    .title_sec h2{ display: none;}
+    .title_sec .icon{ float: left; margin-right: 10px;}
+    .title_sec{ display: none; width: 100%;}
+    
+    .graph_section .common_box:nth-child(1),.graph_section .common_box:nth-child(2),.graph_section .common_box:nth-child(3),.graph_section .common_box:nth-child(4){min-height: 130px;}
+    .graph_section .common_box{ width: calc(50% - 20px); margin-left: 10px; margin-right: 10px; margin-bottom: 20px; padding: 5px 10px; position: static!Important; min-height: 10px; border-radius: 8px; float: left;}
+    .graph_section .common_box h4{ font-size: 14px; font-weight: normal; line-height: 20px; float: none!important; cursor: pointer; padding: 10px 10px; position: static; margin: -5px -10px; border-radius: 5px; width: calc(100% + 20px);}
+    .graph_section .common_box h3{ font-size: 20px; line-height: 25px; margin-top: 10px;}
+    .graph_section .common_box.half{ width: calc(100% - 20px);}
+    .graph_section .common_box.half .indicate_list{ width: 100%; padding: 0 10px;}
+    .graph_section .common_box.half .indicate_list li{ padding: 5px 0;}
+    .graph_section .common_box.half .progressimg{ margin: 0 auto; float: none}
+    
+    .graph_section .common_box .indicate_list.small-graph{ padding-left: 0;}
+	.customers h4 + div{display: none !important;}
+    .graph_section .common_box.customers img{ float: right; display: none; margin: -25px 0 0; width: 45px;}
+    
+    .pagesummmary_box{ padding: 0 0 20px;}
+    .indicate_list li{ padding: 10px 0;}
+    .indicate_list li p{ font-size: 15px; line-height: 20px;}
+    .indicate_list li h3{ font-size: 20px; line-height: 25px;}
+    .indicate_list li .arrow{ width: 40px; height: 40px; line-height: 38px; font-size: 24px;}
+    footer{ padding: 10px 0; margin: 10px 0 0; clear: both}
+    
+    .graph_section.masonry{ height: auto!important; margin: 0 -10px;}
+    .graph_section .common_box h4 i{ font-size: 20px; display: block; float: right}
+    .graph_section .common_box h4 .fa-arrows{ display: none;}
+    .graph_section .common_box .slidepanel{ display: none; max-height: 300px;}
+    .graph_section .common_box .slidepanel > div{ margin-bottom: 20px; min-width: 100%; height: 150px; text-align: center}
+    .graph_section .common_box.barchart .slidepanel > div{ margin-bottom: 0px; min-width: 100%; height: auto; text-align: center}
+    .graph_section .common_box .slidepanel > div > div{display: inline-block!important; height: 150px; float: none!important;}
+    .graph_section .common_box.barchart .slidepanel iframe{ margin:10px 0 0 0 !important; position: absolute !important; }
+    .graph_section .common_box .slidepanel iframe{ position: static !important; margin: -25vh 0 0 0 !important;}
+    .graph_section .common_box.half > div{ margin: 25px auto 0; float: none !Important;}
+
+    .graph_section .common_box h4 .fa-angle-up, .graph_section .common_box h4.arrow .fa-angle-down{ display: none;}
+    .graph_section .common_box h4.arrow .fa-angle-up{ display: block;}
+    .graph_section .common_box.barchart h3{ float: none; color: #007f24; text-align: center; margin: 10px 0 0;}
+    .graph_section .common_box.barchart p{ text-align: center;}
+    
+    .calender_sec{ right: 2%; top: 32px;}
+    
+    .filter_section .nav-tabs{ margin: 0;}
+    .advanced-filter .curreny_box{ margin: 0 3px 0 0;}
+    .advanced-filter .curreny_box select{ min-width: 10px; font-size: 12px;}
+    .advanced-filter{ float: left; width: 100%;}
+    .filter_section .nav-tabs li a{ padding: 1px 7px; min-width: 10px;}
+    .filter_section .nav-tabs li a i{ margin-left: 0;}
+    .filter_section .nav-tabs li.active a{}
+    .filter_section .tab-content .table-responsive{ border: none; margin: 0;}
+    .main_sidebar.lessheight{ min-height: 160px;}
+    .main_sidebar.lessheight + .main_container{ margin: -100px 0 0;}
+    .filter-row .keep{ margin-top: 6px;}
+    
+    .summary_title .curreny{ display: block; float: left}
+    .summary_title .curreny select{ background: #5D7233; width: 100px; border: none; color: #fff; appearance:none; -moz-appearance:none; -webkit-appearance:none; height: 35px;}
+	.summary_title .curreny select:focus{outline: none;}
+    
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+	
+}

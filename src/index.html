@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Nkd</title>
+  <base href="/">
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css">
+  <link type="text/css" rel="stylesheet" href="assets/fonts/font-awesome.css">
+   <link type="text/css" rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+   <app-root>
+     <div class="spinner">
+      <div class="cube1"></div>
+      <div class="cube2"></div>
+    </div>
+  </app-root>
+  <div class="overlay"></div>
+  <script type="text/javascript" src="assets/js/jquery-1.11.3.js"></script>
+  <!--<script type="text/javascript" src="assets/js/jquery.masonry.min.js"></script>-->
+  <!--<script type="text/javascript" src="assets/js/imagesloaded.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.mCustomScrollbar.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.js"></script>-->
+  <script type="text/javascript" src="assets/js/chart.bundle.js"></script> 
+  <script type="text/javascript" src="assets/js/index.js"></script>
+
+    <script>
+	$(document).ready(function(){
+
+      $('body').click(function(e) {
+        var target = $(e.target);
+        if(!target.is('.day') && !target.is('.calender_sec')) {
+           if ( $('.calender_sec').is(':visible') ) {
+               $('.calender_sec').hide();
+                
+           }
+
+        }
+    });
+    
+    $('.overlay').click(function(){
+         $(this).removeClass('showlay');
+         $('#Main_menu').removeClass('show');
+         $('.user-mobile-dropdown').removeClass('show');
+         $('.navbar-toggle').removeClass('cross');
+         $('.login-toggle').removeClass('cross');
+          $('.login-toggle').removeClass('fade');
+          $('.navbar-toggle').removeClass('fade');
+          $('body').toggleClass('noshow');
+     });
+		
+	});
+    //  window.onresize = function(){ location.reload(); }
+      </script>
+</body>
+</html>

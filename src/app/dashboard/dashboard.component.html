@@ -1,0 +1,368 @@
+ <!--<div class="spinner-inner" *ngIf="showLoader">
+      <div class="cube1"></div>
+      <div class="cube2"></div>
+    </div>-->
+<div class="title_sec">
+                <a class="icon" tooltip="Print"><i class="fa fa-print"></i></a>
+                <a class="icon" tooltip="Email"><i class="fa fa-share-square-o"></i></a>
+                <a class="icon" tooltip="Save"><i class="fa fa-floppy-o"></i></a>
+                <h2>Global</h2>
+                <div class="curreny_box">
+                    <span>Currency</span>
+                    <select [(ngModel)]="selectedCurrency" (ngModelChange)="changeCurrency($event)">
+                        <option [ngValue]="'USD'">US Dollars</option>
+						<option [ngValue]="'AED'">AED</option>
+                        <option [ngValue]="'BHD'">BD</option>
+                        <option [ngValue]="'GBP'">Pound</option>
+                        <option [ngValue]="'EUR'">Euro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pagesummmary_box">
+                <div class="summary_title">
+                    <div class="curreny">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <select [(ngModel)]="selectedCurrency" (ngModelChange)="changeCurrency($event)">
+                            <option [ngValue]="'USD'">US Dollars</option>
+                            <option [ngValue]="'AED'">AED</option>
+                            <option [ngValue]="'BHD'">BD</option>
+                            <option [ngValue]="'GBP'">Pound</option>
+                            <option [ngValue]="'EUR'">Euro</option>
+                        </select>
+                    </div>
+                   <!--<h3>Global</h3>-->
+                    <a class="day" (click)="toggleDaySec($event)">Yesterday <i class="fa fa-ellipsis-v"></i></a>
+                    <div class="calender_sec">
+                        <ul>
+                            <li><a>Yesterday</a></li>
+                            <li><a>Current Week</a></li>
+                            <li><a>Last Week</a></li>
+                            <li><a>Current Month</a></li>
+                            <li><a>Last Month</a></li>
+                            <li><a>Current Year</a></li>
+                            <li><a>Last Year</a></li>
+                            <li><a>Custom</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sales_box">
+                    <ul>
+                        <li><span>Gross sales </span> <strong>{{grossSalesGlobal}}</strong></li>
+                        <li><span>Net sales </span> <strong>{{netSalesGlobal}}</strong></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-sm-6">
+                    <sebm-google-map 
+                        [latitude]="lat"
+                        [longitude]="lng"
+                        [zoom]="zoom"
+                        [disableDefaultUI]="false"
+                        [zoomControl]="false"
+                        [styles]="styles"
+                        [scrollwheel]="false"
+                        [disableDoubleClickZoom] = "true"
+                        (mapClick)="mapClicked($event)">
+                        
+                        <sebm-google-map-marker 
+                            *ngFor="let m of markers; let i = index"
+                            (markerClick)="clickedMarker(m.label, i)"
+                            [latitude]="m.lat"
+                            [longitude]="m.lng"
+                            [label]="m.label"
+                            [markerDraggable]="m.draggable"
+                            (dragEnd)="markerDragEnd(m, $event)">
+                            
+                            <sebm-google-map-info-window>
+                            <strong>{{m.infoText}}</strong>
+                            </sebm-google-map-info-window>
+                            
+                        </sebm-google-map-marker>
+                        
+                        <!--<sebm-google-map-circle *ngFor="let m of markers"  
+                            [latitude]="m.lat" 
+                            [longitude]="m.lng" 
+                            [radius]="500000"
+                            [strokeColor]="'#FFFFFF'"
+                            [strokeWeight]="2"
+                            [strokeOpacity]="0.8"
+                            [fillOpacity]="1"
+                            [fillColor]="m.color"
+                            [circleDraggable]="false"
+                            [editable]="false">
+                        </sebm-google-map-circle>-->
+
+                        </sebm-google-map>
+                    <!--<img src="../assets/images/global-map.jpg" alt="" class="img-responsive">-->
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <ul class="indicate_list">
+                        <li *ngFor="let ctData of countryData">
+                            <small class="purple" [ngStyle]="{'background': ctData.color}"></small>
+                            <p>{{ctData.country}}</p>
+                            <h3>{{ctData.sales}}</h3>
+                            <a [routerLink]="['/country', ctData.country]" class="arrow"><i class="fa fa-angle-right"></i></a>
+                        </li>                                                                    
+                    </ul>
+                </div>
+            </div>
+
+
+        <div #grid class="graph_section grid effect-1">
+                <div class="common_box grid-item half-box">
+                    <h4 class="header">Labor Cost <i class="fa fa-arrows"></i></h4>
+                    <h3>{{laborCost}}/{{laborCostPerc}}%</h3>
+                    <span class="percent">20% Up</span>
+                    <p class="week">This day last week</p>
+                </div>
+                <div class="common_box grid-item customers half-box">
+                    <h4 class="header">Customers <i class="fa fa-arrows"></i></h4>
+
+                    <div style="display: block; width: 68px; float: left;" *ngIf="isCustomerDataAvailable">
+                        <canvas baseChart                           
+                            height="69"
+                            [data]="customersData"
+                            [labels]="customersLabels"
+                            [chartType]="'doughnut'"
+                            [options] = "customersOptions"
+                            [colors] = "customersColors"
+                            [legend]=false></canvas>
+                         </div>
+                    <!--<img src="../assets/images/customers.jpg" alt="" class="graph">-->
+                    <h3>{{newCustomers + oldCustomers}}</h3>
+                    <ul class="indicate_list small-graph">
+                        <li>
+                            <small class="dgreen"></small>
+                            <p>New</p>
+                            <span class="badges">{{newCustomers}}</span>
+                        </li>
+                        <li>
+                            <small class="lgreen"></small>
+                            <p>Repeat</p>
+                            <span class="badges">{{oldCustomers}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="common_box grid-item half-box">
+                    <h4 class="header">Delivery Charges <i class="fa fa-arrows"></i></h4>
+                    <h3 class="space">{{deliveryCount}}/{{deliveryValue}}</h3>
+                    <p>Qty / Value</p>
+                </div>
+               <div class="common_box grid-item half-box">
+                    <h4 class="header">Speedline Connect <i class="fa fa-arrows"></i></h4>
+                    <h3 class="space">{{speedlineCount}}/{{speedlineValue}}</h3>
+                    <p>Qty / Value</p>
+                </div>
+                <div class="common_box grid-item half full-box">
+                    <h4 class="header">Payment types <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                        
+                    <div style="display: block; width: 185px; float: left;" *ngIf="isPaymentDataAvailable">
+                        <div class="leftgraph">
+                            <canvas baseChart                           
+                                height="186"
+                                [data]="paymentTypesData"
+                                [labels]="paymentTypesLabels"
+                                [chartType]="'doughnut'"
+                                [options] = "paymentTypesOptions"
+                                [colors] = "paymentTypesColors"
+                                [legend]=false></canvas>
+
+                                <p class="value">{{paymentTypesCenterData.qty}}</p>
+                                <span class="value2">{{paymentTypesCenterData.val}}</span>
+                           </div>
+                         </div>
+                        
+                        
+                        <!--<img src="../assets/images/payment_type.jpg" alt="" class="progressimg img-responsive">-->
+                        <ul class="indicate_list">
+                            <li *ngFor="let pt of paymentTypes">
+                                <small class="dgreen" [ngStyle]="{'background': pt.color}"></small>
+                                <p>{{pt.type}}</p>
+                                <h3>{{pt.count}} ({{pt.countPerc}}%)</h3>
+                                <span class="badges">{{pt.value}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="common_box grid-item half full-box">
+                    <h4 class="header">Discounts <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                        
+                    <div style="display: block; width: 185px; float: left;" *ngIf="isDiscountDataAvailable">
+                       
+                       <div class="leftgraph">
+                                <canvas baseChart                           
+                                    height="186"
+                                    [data]="discountData"
+                                    [labels]="discountLabels"
+                                    [chartType]="'doughnut'"
+                                    [options] = "discountOptions"
+                                    [colors] = "discountColors"
+                                    [legend]=false></canvas>
+                                <p class="value">{{discountsCenterData.qty}}</p>
+                                <span class="value2">{{discountsCenterData.val}}</span>
+                            </div>
+                         </div>
+                        
+                        
+                        <!--<img src="../assets/images/payment_type.jpg" alt="" class="progressimg img-responsive">-->
+                        <ul class="indicate_list">
+                            <li *ngFor="let ds of discount">
+                                <ul class="inner-list" *ngIf="ds.type == 'Coupon' && isTopCouponDataAvailable">
+                                    <li>
+                                        <div>
+                                            <small class="dgreen" [ngStyle]="{'background': ds.color}"></small>
+                                            <p>{{ds.type}}</p>
+                                            <h3>{{ds.count}} ({{ds.perc}}%)</h3>
+                                            <span class="badges">{{ds.value}}</span>
+                                        </div>    
+                                    </li>
+                                    <li *ngFor="let tc of topCoupon">
+                                        <div>                                            
+                                            <p>{{tc.name}}</p>
+                                            <h3>{{tc.count}}</h3>
+                                            <span class="badges">{{tc.value}}</span>
+                                        </div>    
+                                    </li>
+                                </ul>    
+                                <div class="main-list-item" *ngIf="ds.type != 'Coupon'">
+                                    <small class="dgreen" [ngStyle]="{'background': ds.color}"></small>
+                                    <p>{{ds.type}}</p>
+                                    <h3>{{ds.count}} ({{ds.perc}}%)</h3>
+                                    <span class="badges">{{ds.value}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="common_box grid-item space half-box">
+                    <h4 class="header">Taxes <i class="fa fa-arrows"></i></h4>
+                    <h3 class="space">{{taxAmount}}</h3>
+                    <p>Amount</p>
+                </div>
+                <div class="common_box grid-item half-box">
+                    <h4 class="header">Voids <i class="fa fa-arrows"></i></h4>
+                    <h3 class="space">{{voidsCount}}/{{voidsValue}}</h3>
+                    <p>Qty / Value</p>
+                </div>
+                <div class="common_box grid-item half full-box">
+                    <h4 class="header">Sales By Category <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                    <div style="display: block; width: 185px; float: left;" *ngIf="isSalesCategoryDataAvailable">
+                        <div class="leftgraph">
+                            <canvas baseChart                           
+                                height="186"
+                                [data]="salesCategoryData"
+                                [labels]="salesCategoryLabels"
+                                [chartType]="'doughnut'"
+                                [options] = "salesCategoryOptions"
+                                [colors] = "salesCategoryColors"
+                                [legend]=false></canvas>
+                                
+                                <p class="value">{{salesCategoryCenterData.qty}}</p>
+                                 <span class="value2">{{salesCategoryCenterData.val}}</span>
+                            </div>
+                         
+                        </div>
+                    
+                        
+                        <!--<img src="../assets/images/payment_type.jpg" alt="" class="progressimg img-responsive">-->
+                        <ul class="indicate_list">
+                            <li *ngFor="let sc of salesCategory">
+                                <small class="dgreen" [ngStyle]="{'background': sc.color}"></small>
+                                <p>{{sc.type}}</p>
+                                <h3>{{sc.count}} ({{sc.countPerc}}%)</h3>
+                                <span class="badges">{{sc.value}}</span>
+                            </li>
+                        </ul>
+                   </div>
+                </div>
+                <div class="common_box grid-item half barchart full-box">
+                    <h4 class="header">Top Selling Employees <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                        <!--<h3>69/856.90</h3>
+                        <p>Qty / Value</p>-->
+                        
+                    <div style="display: block;">
+                        <canvas baseChart width="483" height="225" *ngIf="isTopEmpDataAvailable"
+                                        [datasets]="topEmpData"
+                                        [labels]="topEmpLabels"
+                                        [options]="topEmpOptions"
+                                        [colors]="topEmpColors"
+                                        [legend]= false
+                                        [chartType]="'bar'"></canvas>
+                            </div>
+
+                        <!--<img src="./assets/images/seling-emp.jpg" alt="" class="img-responsive">-->
+                    </div>
+                </div>
+                <div class="common_box grid-item half full-box">
+                    <h4 class="header">Order types <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                        
+                    <div style="display: block; width: 185px; float: left;" *ngIf="isOrderDataAvailable">
+                            <div class="leftgraph">
+                                <canvas baseChart                           
+                                    height="186"
+                                    [data]="orderTypesData"
+                                    [labels]="orderTypesLabels"
+                                    [chartType]="'doughnut'"
+                                    [options] = "orderTypesOptions"
+                                    [colors] = "orderTypesColors"
+                                    [legend]=false></canvas>
+                                 <p class="value">{{orderTypesCenterData.qty}}</p>
+                                 <span class="value2">{{orderTypesCenterData.val}}</span>
+                            </div>
+                         </div>   
+                       
+                        <!--<img src="../assets/images/order.jpg" alt="" class="img-responsive progressimg">-->
+                        <ul class="indicate_list">
+                            <li *ngFor="let ot of orderTypes">
+                                <small class="dgreen" [ngStyle]="{'background': ot.color}"></small>
+                                <p>{{ot.type}}</p>
+                                <h3>{{ot.count}} ({{ot.perc}}%)</h3>
+                                <span class="badges">{{ot.value}}</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="common_box grid-item half barchart full-box">
+                    <h4 class="header">Out the door time <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                        <h3>{{otdAvg}} <span>Avg</span></h3>
+                        
+                        
+                         <div style="display: block;" *ngIf="isOtdDataAvailable">
+                            <canvas baseChart width="483" height="225"
+                                        [datasets]="otdData"
+                                        [labels]="otdLabels"
+                                        [options]="otdOptions"
+                                        [colors]="otdColors"
+                                        [legend]= false
+                                        [chartType]="'bar'"></canvas>
+                            </div>
+
+                        
+                        <!--<img src="../assets/images/doortime.jpg" alt="" class="img-responsive">-->
+                    </div>
+                </div>
+                <div class="common_box grid-item half barchart full-box">
+                    <h4 class="header">Top 5 Delivery Areas <i class="fa fa-arrows"></i><i class="fa fa-angle-down"></i> <i class="fa fa-angle-up"></i></h4>
+                    <div class="slidepanel">
+                       
+                        <div style="display: block;" *ngIf="isDelAreaDataAvailable">
+                            <canvas baseChart width="483" height="225"
+                                        [datasets]="delAreaData"
+                                        [labels]="delAreaLabels"
+                                        [options]="delAreaOptions"
+                                        [colors]="delAreaColors"
+                                        [legend]= false
+                                        [chartType]="'bar'"></canvas>
+                            </div>
+                       
+                        <!--<img src="../assets/images/delivery.jpg" alt="" class="img-responsive">-->
+                    </div>
+                </div>
+            </div>
+
